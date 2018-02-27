@@ -33,7 +33,7 @@ done
 
 sleep 0.1
 
-haproxy -f "$haproxy_cfg" -p "$haproxy_pid" -D -st $( cat $haproxy_pid )
+haproxy -f "$haproxy_cfg" -p "$haproxy_pid" -D -sf $( cat $haproxy_pid )
 
 for i in "${PORTS[@]}"; do
   iptables -w -D INPUT -p tcp --dport "${i}" --syn -j DROP
